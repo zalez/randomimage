@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Credentials must never land in the repo
+.env
+*.pem
+*credentials*.json

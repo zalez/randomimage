@@ -48,6 +48,16 @@ def gen_inspired_img():
     return str(n), f"Create an image. Let yourself be inspired by this number: {n}"
 
 
+def gen_inspired_pure():
+    # Explicitly tells the model the string is a starting point, not something
+    # to depict -- an attempt to get invention rather than transcription.
+    n = random.randint(0, 1_000_000_000)
+    return str(n), (
+        "Create an image. Use the following as pure inspiration, "
+        f"not as a description: {n}"
+    )
+
+
 GENERATORS = {
     "int": gen_int,
     "uuid": gen_uuid,
@@ -55,6 +65,7 @@ GENERATORS = {
     "rand64": gen_rand64,
     "inspired": gen_inspired,
     "inspired_img": gen_inspired_img,
+    "inspired_pure": gen_inspired_pure,
 }
 
 

@@ -94,16 +94,13 @@ def openai(prompt: str) -> bytes:
 def stability(prompt: str) -> bytes:
     """Stable Diffusion 3.5 Large via AWS Bedrock, 1344x768.
 
-    Auth is a named AWS profile, the standard convention -- boto3 resolves SSO
-    sessions from ~/.aws/config itself. Only us-west-2 carries the active
-    Stability text-to-image models.
+    Auth uses boto3's own credential resolution: $AWS_PROFILE if set, otherwise
+    the "default" profile, including SSO sessions from ~/.aws/config. Only
+    us-west-2 carries the active Stability text-to-image models.
     """
     import boto3
 
-    session = boto3.Session(
-        profile_name=os.environ.get("AWS_PROFILE", "personal"),
-        region_name=os.environ.get("AWS_REGION", "us-west-2"),
-    )
+    session = boto3.Session(region_name=os.environ.get("AWS_REGION", "us-west-2"))
     response = session.client("bedrock-runtime").invoke_model(
         modelId=os.environ.get("BEDROCK_IMAGE_MODEL", "stability.sd3-5-large-v1:0"),
         body=json.dumps(

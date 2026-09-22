@@ -11,6 +11,10 @@ kicks in.
 
 Three services, nine images each. They did three completely different things.
 
+📝 **The story behind this repo:** [When AI Refuses to Dream](https://constantin.glez.de/posts/2026-09-22-when-ai-refuses-to-dream/)
+on my blog, a short write-up of what surprised me most, and why curated
+randomness beats pure noise if you are after serendipity.
+
 ---
 
 ## The short version
